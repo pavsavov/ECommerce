@@ -7,6 +7,13 @@ namespace ECommerce.Models
 {
     public class Genre : BaseDbModel
     {
+        public Genre()
+        {
+            this.Books = new HashSet<Book>();
+        }
+
         public string Name { get; set; }
+
+        public ICollection<Book> Books { get; set; }
     }
 }

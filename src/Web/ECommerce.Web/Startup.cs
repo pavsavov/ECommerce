@@ -26,11 +26,13 @@ namespace ECommerce.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-            //Extension for registering dependencies.
-            services.DependenciesRegistrator();
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //Application custom extensions.
+            services.Registrator();
+            services.AddECommerceDbContext(this.Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
