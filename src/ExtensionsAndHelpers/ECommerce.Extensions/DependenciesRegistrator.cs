@@ -20,6 +20,7 @@ namespace ExtensionsAndHelpers.ECommerce.Extensions
             services.AddTransient<ECommerceDbContext>();
             return services;
         }
+
         /// <summary>
         /// Public access to Application's DbContext configuration builder.
         /// </summary>
