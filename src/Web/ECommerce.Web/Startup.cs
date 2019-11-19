@@ -1,4 +1,5 @@
-﻿using ExtensionsAndHelpers.ECommerce.Extensions;
+﻿using ECommerce.Extensions;
+using ExtensionsAndHelpers.ECommerce.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,7 +27,7 @@ namespace ECommerce.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //Application custom extensions.
@@ -57,6 +58,11 @@ namespace ECommerce.Web
 
             app.UseMvc(routes =>
             {
+                routes.MapAreaRoute(
+                    name: "AuthenticateArea",
+                    areaName: "Authenticate",
+                    template: "Authenticate/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

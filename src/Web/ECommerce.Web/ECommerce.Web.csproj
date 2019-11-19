@@ -14,11 +14,17 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\..\ExtensionsAndHelpers\ECommerce.Extensions\ECommerce.Extensions.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Area\Authenticate\Views\" />
   </ItemGroup>
 
 </Project>
