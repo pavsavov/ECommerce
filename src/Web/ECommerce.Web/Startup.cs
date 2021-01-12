@@ -3,7 +3,7 @@ using ExtensionsAndHelpers.ECommerce.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,7 +28,8 @@ namespace ECommerce.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddRazorPages();
+            services.AddMvc();
 
             //Application custom extensions.
             services.Registrator();
@@ -38,7 +39,7 @@ namespace ECommerce.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -55,17 +56,17 @@ namespace ECommerce.Web
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
-            app.UseMvc(routes =>
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapAreaRoute(
+                endpoints.MapAreaControllerRoute(
                     name: "AuthenticateArea",
                     areaName: "Authenticate",
-                    template: "Authenticate/{controller=Home}/{action=Index}/{id?}");
+                    pattern: "Authenticate/{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
