@@ -52,11 +52,15 @@ namespace ECommerce.Web
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
+
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+           
             app.UseRouting();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapAreaControllerRoute(
