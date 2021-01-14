@@ -13,34 +13,34 @@ namespace eCommerce.Repository.Contracts
         /// </summary>
         /// <param name="entity">Entity which will be created or updated</param>
         /// <returns>Updated or created entity</returns>
-        Task<T> Save(T entity);
+        Task<T> SaveAsync(T entity);
 
         /// <summary>
         /// Deletes entity
         /// </summary>
         /// <param name="id">Entity's unique identifier</param>
         /// <returns>Boolean value if the deletion operation has been successful</returns>
-        Task<bool> Delete(T id);
+        Task<bool> DeleteAsync(T id);
 
         /// <summary>
         /// Returns single entity of type 'T'
         /// </summary>
         /// <param name="id">Entity's unique identifier</param>
         /// <returns>Found Entity</returns>
-        Task<T> GetById(Guid id);
+        Task<T> GetByIdAsync(Guid id);
 
         /// <summary>
         /// Gets all entities of type 'T';
         /// </summary>
         /// <returns>Enumerable collection of all found records of a given type</returns>
-        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
 
         /// <summary>
         /// Finds and returns all entities of type 'T', filtered by an expression.
         /// </summary>
         /// <param name="expression"></param>
         /// <returns>Collection of all found entities, evaluated against the given expression</returns>
-        Task<IEnumerable<T>> GetAllByAny(Expression<Func<T, bool>> expression);
+        Task<IEnumerable<T>> GetAllByAnyAsync(Expression<Func<T, bool>> expression);
 
     }
 }
