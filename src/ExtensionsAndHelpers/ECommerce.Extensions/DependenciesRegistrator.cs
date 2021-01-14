@@ -42,6 +42,7 @@ namespace ExtensionsAndHelpers.ECommerce.Extensions
         /// <returns></returns>
         private static DbContextOptionsBuilder DbContextConfigurationBuilder(this DbContextOptionsBuilder options, IConfiguration configuration)
         {
+            //TODO: Create a common  constants project where this and other magic strings will be moved to.
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 
             return options;

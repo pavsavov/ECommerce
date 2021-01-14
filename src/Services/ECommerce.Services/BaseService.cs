@@ -4,40 +4,19 @@ using ECommerce.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace ECommerce.Services
 {
-    public abstract class BaseService<TEntity> : ICRUDService<TEntity>
-        where TEntity : BaseDbModel
+    public abstract class BaseService
     {
-        private readonly ECommerceDbContext _context;
-        public BaseService(ECommerceDbContext context)
+        protected ILogger _logger;
+        //protected IMapper _mapper;
+        public BaseService(ILogger logger)
         {
-            _context = context;
-        }
-        public virtual Task<TEntity> Create(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual Task<bool> Delete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual Task<IEnumerable<TEntity>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual Task<TEntity> GetById(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual Task<TEntity> Update(TEntity Entity)
-        {
-            throw new NotImplementedException();
+            _logger = logger;
         }
     }
 }

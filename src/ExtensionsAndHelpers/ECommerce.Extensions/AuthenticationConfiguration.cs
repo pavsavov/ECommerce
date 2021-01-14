@@ -23,7 +23,7 @@ namespace ECommerce.Extensions
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //TODO:  move Authentication Scheme to a config file. ????????Consider JWT Auth!!!!!!!!!!!!!!
+            //TODO:  move Authentication Scheme to a config file. ????????Consider JWT Auth as well!!!!!!!!!!!!!!
             services.AddAuthentication("BookShopAuth")
                 .AddCookie(options => options.CookieAuthenticationConfiguration());
 
