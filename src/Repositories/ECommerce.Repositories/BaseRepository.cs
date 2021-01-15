@@ -20,7 +20,7 @@ namespace eCommerce.Repository
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async virtual Task<TEntity> SaveAsync(TEntity entity)
+        public async Task<TEntity> SaveAsync(TEntity entity)
         {
             _context.Entry(entity).State = entity.Id == default ? EntityState.Added : EntityState.Modified;
             await _context.SaveChangesAsync();
@@ -41,7 +41,7 @@ namespace eCommerce.Repository
             return await _context.Set<TEntity>().ToListAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllByAnyAsync(Expression<Func<TEntity, bool>> expression)
+        public async Task<IEnumerable<TEntity>> GetAllFilteredAsync(Expression<Func<TEntity, bool>> expression)
         {
             return await _context.Set<TEntity>().Where(expression).ToListAsync();
         }

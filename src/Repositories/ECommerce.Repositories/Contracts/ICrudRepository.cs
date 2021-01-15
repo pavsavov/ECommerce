@@ -40,7 +40,7 @@ namespace eCommerce.Repository.Contracts
         /// </summary>
         /// <param name="expression"></param>
         /// <returns>Collection of all found entities, evaluated against the given expression</returns>
-        Task<IEnumerable<T>> GetAllByAnyAsync(Expression<Func<T, bool>> expression);
+        Task<IEnumerable<T>> GetAllFilteredAsync(Expression<Func<T, bool>> expression);
 
     }
 }

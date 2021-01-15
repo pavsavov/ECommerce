@@ -19,12 +19,12 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ExtensionsAndHelpers\ECommerce.Extensions\ECommerce.Extensions.csproj" />
+    <Folder Include="Area\Authenticate\Views\" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <Folder Include="Area\Authenticate\Views\" />
+    <ProjectReference Include="..\..\Services\ECommerce.Services\ECommerce.Services.csproj" />
   </ItemGroup>
 
 </Project>
