@@ -21,7 +21,7 @@ namespace ECommerce.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //TODO: move to Extensions project.
+            //TODO: move to Extensions project and research on a method to dynamicly load all mappable types.
 
             /*Registration of types which implement IMapFrom <> and IMapTo<> interfaces
              assemblies in order to be mapped automatically by convention.
@@ -75,10 +75,9 @@ namespace ECommerce.Web
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapAreaControllerRoute(
-                    name: "AuthenticateArea",
-                    areaName: "Authenticate",
-                    pattern: "Authenticate/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "area",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",
