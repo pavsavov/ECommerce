@@ -2,14 +2,14 @@
 
 namespace ECommerce.Models.BaseModel
 {
-    public class BaseDbModel
+    public abstract class BaseDbModel
     {
         /// <summary>
         /// Every time a new instance is created, a default valued Guid Id will be assgined
         /// </summary>
-        public BaseDbModel()
+        protected BaseDbModel()
         {
-            this.Id = default;
+            Id = Guid.NewGuid();
         }
 
         public Guid Id { get; set; }

@@ -28,10 +28,5 @@ namespace ECommerce.Repositories
 
             return GetAll().Where(predicate);
         }
-
-        //protected virtual async Task<bool> EnsureOperation(TEntity entity)
-        //{
-        //    return await GetByIdAsync(entity.Id) != default;
-        //}
     }
 }

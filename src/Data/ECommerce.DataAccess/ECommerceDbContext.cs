@@ -1,36 +1,34 @@
-﻿using ECommerce.Models;
+﻿using ECommerce.DataAccess.ModelConfigurations;
+using ECommerce.Models;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace ECommerce.DataAccess
 {
+    /// <summary>
+    ///https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation
+    /// https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-implementation-entity-framework-core
+    /// </summary>
     public class ECommerceDbContext : DbContext
     {
-        public ECommerceDbContext()
-        {
-        }
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<Author> Authors { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Price> Prices { get; set; }
+
+        public DbSet<Publisher> Publishers { get; set; }
 
         public ECommerceDbContext(DbContextOptions<ECommerceDbContext> options)
             : base(options)
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>()
-                .HasOne<Author>(au => au.Author);
-
-            modelBuilder.Entity<Author>()
-                .HasMany<Book>(a => a.Books)
-                .WithOne(a => a.Author);
-
-            modelBuilder.Entity<Genre>()
-                .HasMany<Book>(b => b.Books)
-                .WithOne(g => g.Genre);
+            modelBuilder.DbConfigurationRegitrator();
         }
     }
 }
