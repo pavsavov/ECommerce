@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace eCommerce.Repository.Contracts
+namespace ECommerce.Repository.Base
 {
+    /// <summary>
+    /// Provides basic CRUD methods
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface ICrudRepository<T> where T : class
     {
         /// <summary>
@@ -20,7 +24,7 @@ namespace eCommerce.Repository.Contracts
         /// </summary>
         /// <param name="id">Entity's unique identifier</param>
         /// <returns>Boolean value if the deletion operation has been successful</returns>
-        Task<bool> DeleteAsync(T id);
+        Task DeleteAsync(T id);
 
         /// <summary>
         /// Returns single entity of type 'T'
@@ -33,14 +37,6 @@ namespace eCommerce.Repository.Contracts
         /// Gets all entities of type 'T';
         /// </summary>
         /// <returns>Enumerable collection of all found records of a given type</returns>
-        Task<IEnumerable<T>> GetAllAsync();
-
-        /// <summary>
-        /// Finds and returns all entities of type 'T', filtered by an expression.
-        /// </summary>
-        /// <param name="expression"></param>
-        /// <returns>Collection of all found entities, evaluated against the given expression</returns>
-        Task<IEnumerable<T>> GetAllFilteredAsync(Expression<Func<T, bool>> expression);
-
+        IQueryable<T> GetAll();   
     }
 }

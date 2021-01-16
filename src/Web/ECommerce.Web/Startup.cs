@@ -45,7 +45,9 @@ namespace ECommerce.Web
 
             //Application custom extensions.
             services.Registrator();
+
             services.AddECommerceDbContext(this.Configuration);
+
             services.AddECommerceAuthentication();
 
         }

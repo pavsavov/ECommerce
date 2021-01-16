@@ -15,6 +15,6 @@ namespace ECommerce.Repositories.Books
         /// </summary>
         /// <param name="expression"></param>
         /// <returns>Collection of all found entities, evaluated against the given expression</returns>
-        IQueryable<Book> FilteredBooks(Expression<Func<Book, bool>> expression);
+        IQueryable<Book> FilterBooks(Expression<Func<Book, bool>> expression);
     }
 }

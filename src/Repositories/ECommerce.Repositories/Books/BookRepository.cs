@@ -4,26 +4,34 @@ using ECommerce.Repositories.Books;
 using ECommerce.Repository.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ECommerce.Repositories
 {
     public class BookRepository : BaseCrudRepository<Book>, IBookRepository
     {
-        protected override DbSet<Book> DbEntity { get; }
+        protected override DbSet<Book> DbEntitiesSet { get; }
 
         public BookRepository(ECommerceDbContext context)
             : base(context)
         {
         }
 
-        public IQueryable<Book> FilteredBooks(Expression<Func<Book, bool>> expression)
+        public IQueryable<Book> FilterBooks(Expression<Func<Book, bool>> predicate)
         {
-            return DbEntity.Where(expression);
+            if (predicate is null)
+            {
+                throw new ArgumentNullException(nameof(predicate),"No filter expression is provided");
+            }
+
+            return GetAll().Where(predicate);
         }
+
+        //protected virtual async Task<bool> EnsureOperation(TEntity entity)
+        //{
+        //    return await GetByIdAsync(entity.Id) != default;
+        //}
     }
 }
