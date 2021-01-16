@@ -1,5 +1,5 @@
 ﻿using ECommerce.Models.BaseModel;
-using System;
+using System.Collections.Generic;
 
 namespace ECommerce.Models
 {
@@ -7,10 +7,16 @@ namespace ECommerce.Models
     {
         public string Title { get; set; }
 
-        public Author Author { get; set; }
-
         public string ISBN { get; set; }
 
-        public Genre Genre { get; set; }
+        public string EAN { get; set; }
+
+        public Price Price { get; set; }
+
+        public Publisher Publisher { get; set; }
+
+        public IEnumerable<Category> Categories { get; set; }
+
+        public IEnumerable<Author> Authors { get; set; }
     }
 }
