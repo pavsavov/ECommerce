@@ -58,6 +58,16 @@ namespace ECommerce.Repository.Base
             return await DbEntitiesSet.FindAsync(id);
         }
 
+        public IQueryable<TEntity> FilterSet(Expression<Func<TEntity, bool>> predicate)
+        {
+            if (predicate is null)
+            {
+                throw new ArgumentNullException(nameof(predicate), "No filter expression is provided");
+            }
+
+            return GetAll().Where(predicate);
+        }
+
     }
 }
 

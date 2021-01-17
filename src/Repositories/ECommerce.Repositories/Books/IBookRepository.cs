@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Repositories.Books
 {
-    public interface IBookRepository : IEntityRepository<Book>
+    public interface IBookRepository
     {
 
     }

@@ -37,6 +37,13 @@ namespace ECommerce.Repository.Base
         /// Gets all entities of type 'T';
         /// </summary>
         /// <returns>Enumerable collection of all found records of a given type</returns>
-        IQueryable<T> GetAll();   
+        IQueryable<T> GetAll();
+
+        /// <summary>
+        /// Finds and returns all entities of type 'T', filtered by an expression.
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns>Collection of all found entities, evaluated against the given expression</returns>
+        IQueryable<T> FilterSet(Expression<Func<T, bool>> expression);
     }
 }

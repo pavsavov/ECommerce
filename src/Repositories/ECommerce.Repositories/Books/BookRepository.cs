@@ -12,20 +12,9 @@ namespace ECommerce.Repositories
     public class BookRepository : BaseCrudRepository<Book>, IBookRepository
     {
         protected override DbSet<Book> DbEntitiesSet { get; }
-
         public BookRepository(ECommerceDbContext context)
             : base(context)
         {
-        }
-
-        public IQueryable<Book> FilterSet(Expression<Func<Book, bool>> predicate)
-        {
-            if (predicate is null)
-            {
-                throw new ArgumentNullException(nameof(predicate),"No filter expression is provided");
-            }
-
-            return GetAll().Where(predicate);
         }
     }
 }
