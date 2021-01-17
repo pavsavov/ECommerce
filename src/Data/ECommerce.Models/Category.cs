@@ -9,5 +9,7 @@ namespace ECommerce.Models
 
         public ICollection<Book> Books { get; set; }
 
+        public ICollection<BookCategory> BookCategories { get; set; }
+
     }
 }

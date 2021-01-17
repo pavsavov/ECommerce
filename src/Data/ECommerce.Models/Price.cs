@@ -8,6 +8,6 @@ namespace ECommerce.Models
 
         public string Currency { get; set; }
 
-        public IEnumerable<Book> Book { get; set; }
+        public IEnumerable<Book> Books { get; set; }
     }
 }

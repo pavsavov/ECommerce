@@ -58,8 +58,6 @@ namespace ECommerce.Repository.Base
             return await DbEntitiesSet.FindAsync(id);
         }
 
-
-
     }
 }
 

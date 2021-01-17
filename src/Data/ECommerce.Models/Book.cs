@@ -13,17 +13,12 @@ namespace ECommerce.Models
 
         public string EAN { get; set; }
 
-        [Required]
-        public Guid PriceId { get; set; }
         public Price Price { get; set; }
 
-        //[Required]
-        //public Guid PublisherId { get; set; }
         public Publisher Publisher { get; set; }
 
-        //[Required]
-        //public Guid CateogryId { get; set; }
         public IEnumerable<Category> Categories { get; set; }
+        public IEnumerable<BookCategory> BookCategories { get;set; }
 
         public IEnumerable<Author> Authors { get; set; }
         public IEnumerable<BookAuthor> BookAuthors { get; set; }

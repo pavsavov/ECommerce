@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Repositories", "R
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1ED01FB4-E3D2-414E-8FF1-765C8D7220CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.CommonInfrastructure", "Infrastructure\ECommerce.InfrastructureCommon\ECommerce.CommonInfrastructure.csproj", "{DD81F529-5A56-4EB1-9807-11A7D5EEE17D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Common", "Infrastructure\ECommerce.InfrastructureCommon\ECommerce.Common.csproj", "{DD81F529-5A56-4EB1-9807-11A7D5EEE17D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
