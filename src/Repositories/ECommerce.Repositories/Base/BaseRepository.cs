@@ -13,7 +13,7 @@ namespace ECommerce.Repositories.Base
     /// The need for this class is based on the need to chec
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public abstract class BaseRepository<TEntity> where TEntity : BaseDbModel
+    public abstract class BaseRepository<TEntity> : IBaseRepository where TEntity : BaseDbModel
     {
         private readonly ECommerceDbContext _context;
 

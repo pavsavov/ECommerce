@@ -1,4 +1,5 @@
 ﻿using ECommerce.Models;
+using ECommerce.Repositories.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Repositories.Books
 {
-    public interface IBookRepository
+    public interface IBookRepository 
     {
         /// <summary>
         /// Finds and returns all entities of type 'Book', filtered by an expression.
