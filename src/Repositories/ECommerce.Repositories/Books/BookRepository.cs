@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace ECommerce.Repositories
 {
@@ -19,7 +18,7 @@ namespace ECommerce.Repositories
         {
         }
 
-        public IQueryable<Book> FilterBooks(Expression<Func<Book, bool>> predicate)
+        public IQueryable<Book> FilterSet(Expression<Func<Book, bool>> predicate)
         {
             if (predicate is null)
             {
