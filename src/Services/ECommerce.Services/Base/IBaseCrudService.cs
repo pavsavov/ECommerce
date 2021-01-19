@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ECommerce.Services.Models;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ECommerce.Services.Base
 {
-    public interface IBaseCrudService<T>
+    public interface IBaseCrudService<T> where T : IServiceModel
     {
         /// <summary>
         /// Creates or updates given Entity of type 'T'

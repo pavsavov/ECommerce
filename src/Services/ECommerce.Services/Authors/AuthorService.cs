@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
-using ECommerce.Models;
 using ECommerce.Services.Base;
+using ECommerce.Services.Models.Author.ServiceModels;
 using Microsoft.Extensions.Logging;
 
 namespace ECommerce.Services.Authors
 {
-    public class AuthorService : BaseCrudService<Author>
-    {
+    //global exception handling ..
+    public class AuthorService : BaseCrudService<AuthorServiceModel>
+    { 
         public AuthorService(ILogger logger, IMapper mapper)
             : base(mapper, logger)
         {

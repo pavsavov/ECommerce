@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
+using ECommerce.Services.Models;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ECommerce.Services.Base
 {
-    public abstract class BaseCrudService<T> : BaseService, IBaseCrudService<T> //where T serviceModel
+    public abstract class BaseCrudService<T> : BaseService, IBaseCrudService<T>
+        where T : IServiceModel
     {
         public BaseCrudService(IMapper mapper, ILogger logger)
-            :base(logger,mapper)
+            : base(logger, mapper)
         {
 
         }

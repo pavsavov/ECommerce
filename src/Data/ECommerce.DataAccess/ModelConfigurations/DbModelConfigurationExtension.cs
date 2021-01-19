@@ -58,19 +58,6 @@ namespace ECommerce.DataAccess.ModelConfigurations
         {
             builder.Entity<Author>()
                    .ToTable(ECommerceConstants.AUTHOR_TABLE);
-            //.HasMany(a => a.)
-            //.WithMany(b => b.Books)
-            //.UsingEntity<BookAuthor>(
-            // j => j
-            //     .HasOne(ba => ba.Author)
-            //     .WithMany(a => a.BookAuthors)
-            //     .HasForeignKey(ba => ba.AuthorId),
-            // j => j
-            //    .HasOne(a => a.Book)
-            //    .WithMany(b => b.BookAuthors)
-            //    .HasForeignKey(ba => ba.BookId),
-            // j => j.HasKey(fk => new { fk.BookId, fk.AuthorId })
-            //);
 
             return builder;
         }
