@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Services.Base
 {
-    public interface IBaseCrudService<T> where T : IServiceModel
+    public interface ICrudService<T> where T : ServiceModel
     {
         /// <summary>
         /// Creates or updates given Entity of type 'T'
@@ -18,9 +18,9 @@ namespace ECommerce.Services.Base
         /// <summary>
         /// Deletes entity
         /// </summary>
-        /// <param name="id">Entity's unique identifier</param>
+        /// <param name="deleteObject">Entity to be deleted</param>
         /// <returns>Boolean value if the deletion operation has been successful</returns>
-        Task DeleteAsync(T id);
+        Task<bool> DeleteAsync(T deleteObject);
 
         /// <summary>
         /// Returns single entity of type 'T'

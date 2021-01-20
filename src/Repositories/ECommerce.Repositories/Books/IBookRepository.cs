@@ -1,5 +1,6 @@
 ﻿using ECommerce.Models;
 using ECommerce.Repositories.Base;
+using ECommerce.Repository.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Repositories.Books
 {
-    public interface IBookRepository
+    public interface IBookRepository: ICrudRepository<Book>
     {
 
     }

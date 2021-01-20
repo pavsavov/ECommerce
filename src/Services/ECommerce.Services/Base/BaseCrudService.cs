@@ -1,4 +1,8 @@
 ﻿using AutoMapper;
+using ECommerce.Models;
+using ECommerce.Models.BaseModel;
+using ECommerce.Repositories.Books;
+using ECommerce.Repository.Base;
 using ECommerce.Services.Models;
 using Microsoft.Extensions.Logging;
 using System;
@@ -8,17 +12,29 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Services.Base
 {
-    public abstract class BaseCrudService<T> : BaseService, IBaseCrudService<T>
-        where T : IServiceModel
+    public abstract class BaseCrudService<T> : BaseService, ICrudService<T>
+        where T : ServiceModel
     {
-        public BaseCrudService(IMapper mapper, ILogger logger)
+        private readonly ICrudRepository<Author> _repository;
+
+        public BaseCrudService(ICrudRepository<Author> repository, IMapper mapper, ILogger logger)
             : base(logger, mapper)
         {
-
+            _repository = repository;
         }
 
-        public Task DeleteAsync(T id)
+        public Task<bool> DeleteAsync(T deleteObject)
         {
+            if (deleteObject is null)
+            {
+                //use logger
+                throw new ArgumentNullException(nameof(deleteObject), "The provided object for deletion is null");
+            }
+            //mapp from serviceModel to dbmodel
+
+            //call repository
+
+            // return true or false
             throw new NotImplementedException();
         }
 

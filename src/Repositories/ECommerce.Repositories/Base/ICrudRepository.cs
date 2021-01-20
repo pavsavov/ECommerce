@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerce.Models.BaseModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,7 +11,8 @@ namespace ECommerce.Repository.Base
     /// Provides basic CRUD methods
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface ICrudRepository<T> where T : class
+    public interface ICrudRepository<T>
+        where T : BaseDbModel
     {
         /// <summary>
         /// Creates or updates given Entity of type 'T'

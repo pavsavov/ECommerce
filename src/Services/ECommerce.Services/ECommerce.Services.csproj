@@ -5,12 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Base\BaseCrudService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ECommerce.DataAccess\ECommerce.DataAccess.csproj" />
-    <ProjectReference Include="..\Ecommerce.Services.Models\ClassLibrary1\ECommerce.Services.Models.csproj" />
+    <ProjectReference Include="..\..\Repositories\eCommerce.Repositories\ECommerce.Repositories.csproj" />
+    <ProjectReference Include="..\Ecommerce.Services.Models\ECommerce.Services.Models.csproj" />
   </ItemGroup>
 
 </Project>

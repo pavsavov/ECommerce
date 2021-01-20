@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.Services.Contracts
 {
-    public interface IService
+    public interface IBaseService
     {
     }
 }

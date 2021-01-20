@@ -1,6 +1,9 @@
-﻿namespace ECommerce.Repositories.Authors
+﻿using ECommerce.Models;
+using ECommerce.Repository.Base;
+
+namespace ECommerce.Repositories.Authors
 {
-    public interface IAuthorRepository
+    public interface IAuthorRepository : ICrudRepository<Author>
     {
 
     }

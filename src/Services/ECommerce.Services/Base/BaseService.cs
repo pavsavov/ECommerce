@@ -5,7 +5,7 @@ using ECommerce.Services.Contracts;
 namespace ECommerce.Services.Base
 {
     //add exception handler...could be not here
-    public abstract class BaseService : IService
+    public abstract class BaseService : IBaseService
     {
         protected readonly ILogger _logger;
         protected readonly IMapper _mapper;
@@ -14,6 +14,10 @@ namespace ECommerce.Services.Base
         {
             _logger = logger;
             _mapper = mapper;
+        }
+        protected void Logg(string asd)
+        {
+            
         }
     }
 }
