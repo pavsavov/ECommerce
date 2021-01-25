@@ -15,6 +15,10 @@ namespace ECommerce.Services.Base
             _logger = logger;
             _mapper = mapper;
         }
+        /// <summary>
+        /// example
+        /// </summary>
+        /// <param name="asd"></param>
         protected void Logg(string asd)
         {
             

@@ -1,9 +1,9 @@
 ﻿using ECommerce.Services.Base;
-using ECommerce.Services.Models.Author.ServiceModels.Base;
+using ECommerce.Services.Models.Author.ServiceModels;
 
 namespace ECommerce.Services.Authors
 {
-    public interface IAuthorService : ICrudService<BaseAuthorServiceModel>
+    public interface IAuthorService : ICrudService<AuthorServiceModel>
     {
     }
 }

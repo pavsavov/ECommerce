@@ -1,5 +1,6 @@
 ﻿using ECommerce.Services.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -27,19 +28,19 @@ namespace ECommerce.Services.Base
         /// </summary>
         /// <param name="id">Entity's unique identifier</param>
         /// <returns>Found Entity</returns>
-        Task<T> GetByIdAsync(Guid id);
+        Task<T> GetByIdAsync(Guid? id);
 
         /// <summary>
         /// Gets all entities of type 'T';
         /// </summary>
         /// <returns>Enumerable collection of all found records of a given type</returns>
-        IQueryable<T> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
 
         /// <summary>
         /// Finds and returns all entities of type 'T', filtered by an expression.
         /// </summary>
         /// <param name="expression"></param>
         /// <returns>Collection of all found entities, evaluated against the given expression</returns>
-        IQueryable<T> FilterSet(Expression<Func<T, bool>> expression);
+        Task<IEnumerable<T>> FilterByAsync(Expression<Func<T, bool>> expression);
     }
 }

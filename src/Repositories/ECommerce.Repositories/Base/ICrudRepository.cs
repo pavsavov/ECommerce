@@ -33,7 +33,7 @@ namespace ECommerce.Repository.Base
         /// </summary>
         /// <param name="id">Entity's unique identifier</param>
         /// <returns>Found Entity</returns>
-        Task<T> GetByIdAsync(Guid id);
+        Task<T> GetByIdAsync(Guid? id);
 
         /// <summary>
         /// Gets all entities of type 'T';

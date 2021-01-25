@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
+using ECommerce.Models;
 using ECommerce.Repositories.Books;
 using ECommerce.Services.Base;
+using ECommerce.Services.Extensions;
 using ECommerce.Services.Models.Book.ServiceModels;
-using ECommerce.Services.Models.Book.ServiceModels.Base;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -24,29 +27,59 @@ namespace ECommerce.Services.Books
             _bookRepository = bookRepository;
         }
 
-        public Task<bool> DeleteAsync(BaseBookServiceModel deleteObject)
+        public async Task<BookServiceModel> SaveAsync(BookServiceModel serviceModel)
+        {
+            var mappedEntity = _mapper.Map<Book>(serviceModel);
+
+            var book = await _bookRepository.SaveAsync(mappedEntity);
+
+            if (book is null)
+            {
+                throw new Exception(nameof(book));
+            }
+
+            return _mapper.Map<BookServiceModel>(book);
+        }
+
+        public Task<bool> DeleteAsync(BookServiceModel deleteObject)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<BaseBookServiceModel> FilterSet(Expression<Func<BaseBookServiceModel, bool>> expression)
+        public async Task<IEnumerable<BookServiceModel>> FilterByAsync(Expression<Func<BookServiceModel, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() =>
+            {
+                var mappedExpression = _mapper.Map<Expression<Func<Book, bool>>>(expression);
+
+                var books = _bookRepository.FilterSet(mappedExpression);
+
+                var mappedResult = books.To<BookServiceModel>().AsEnumerable();
+
+                return mappedResult;
+            });
         }
 
-        public IQueryable<BaseBookServiceModel> GetAll()
+        public async Task<IEnumerable<BookServiceModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => _bookRepository
+                       .GetAll()
+                       .To<BookServiceModel>()
+                       .ToList());
+
         }
 
-        public Task<BaseBookServiceModel> GetByIdAsync(Guid id)
+        public async Task<BookServiceModel> GetByIdAsync(Guid? id)
         {
-            throw new NotImplementedException();
-        }
+            if (id is null)
+            {
+                throw new ArgumentNullException(nameof(id), "The provided id is null");
+            }
 
-        public Task<BaseBookServiceModel> SaveAsync(BaseBookServiceModel entity)
-        {
-            throw new NotImplementedException();
+            var book = await _bookRepository.GetByIdAsync(id);
+            var serviceModel = _mapper.Map<BookServiceModel>(book);
+
+            return serviceModel;
         }
     }
 }

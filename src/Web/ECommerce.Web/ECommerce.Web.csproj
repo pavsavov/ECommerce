@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Area\Authenticate\Views\" />
+    <Folder Include="ClientApp\" />
   </ItemGroup>
 
 

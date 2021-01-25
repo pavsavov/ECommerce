@@ -1,16 +1,4 @@
-﻿using ECommerce.DataAccess;
-using ECommerce.Repositories;
-using ECommerce.Repositories.Authors;
-using ECommerce.Repositories.Base;
-using ECommerce.Repositories.Books;
-using ECommerce.Repository.Base;
-using ECommerce.Services.Authors;
-using ECommerce.Services.Base;
-using ECommerce.Services.Books;
-using ECommerce.Services.Contracts;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace ECommerce.Services.Extensions
 {
@@ -26,26 +14,7 @@ namespace ECommerce.Services.Extensions
         /// <returns></returns>
         public static IServiceCollection Registrator(this IServiceCollection services)
         {
-            //Db context
-            services.AddScoped<ECommerceDbContext>();
-            
-            //repository dependencies
-            services.AddTransient(typeof(IBookRepository), typeof(BookRepository));
-            services.AddTransient(typeof(IAuthorRepository), typeof(AuthorRepository));        
-
-            //service dependencies
-           // services.AddTransient(typeof(IBaseService), typeof(BaseService));
-            services.AddTransient(typeof(IBookService), typeof(BookService));
-            services.AddTransient(typeof(IAuthorService), typeof(AuthorService));
-
-            /*Registration of types which implement IMapFrom <> and IMapTo<> interfaces
-  assemblies in order to be mapped automatically by convention.
-  This way creating profiles is not needed.*/
-            //Example:
-            //AutoMapperConfig.RegisterMappings(
-            //    typeof(SomeViewModel).Assembly, || typeof(SomeViewModel).GetTypeInfo().Assembly
-            //    typeof(SomeServiceModel).Assembly,
-            //    );
+            services.AddTransient<ECommerceDbContext>();
             return services;
         }
 

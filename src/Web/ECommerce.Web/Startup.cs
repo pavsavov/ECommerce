@@ -23,14 +23,7 @@ namespace ECommerce.Web
         {
             //TODO: move to Extensions project and research on a method to dynamicly load all mappable types.
 
-            /*Registration of types which implement IMapFrom <> and IMapTo<> interfaces
-             assemblies in order to be mapped automatically by convention.
-             This way creating profiles is not needed.*/
-            //Example:
-            //AutoMapperConfig.RegisterMappings(
-            //    typeof(SomeViewModel).Assembly, || typeof(SomeViewModel).GetTypeInfo().Assembly
-            //    typeof(SomeServiceModel).Assembly,
-            //    );
+ 
 
 
             services.Configure<CookiePolicyOptions>(options =>

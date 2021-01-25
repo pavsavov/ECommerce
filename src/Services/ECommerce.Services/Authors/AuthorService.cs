@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using ECommerce.Repositories.Authors;
 using ECommerce.Services.Base;
-using ECommerce.Services.Models.Author.ServiceModels.Base;
+using ECommerce.Services.Models.Author.ServiceModels;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace ECommerce.Services.Authors
 {
-    //global exception handling ..
     public class AuthorService : BaseService, IAuthorService
     {
         private readonly IAuthorRepository _authorRepository;
@@ -20,27 +20,27 @@ namespace ECommerce.Services.Authors
             _authorRepository = authorRepository;
         }
 
-        public Task<bool> DeleteAsync(BaseAuthorServiceModel deleteObject)
+        public Task<bool> DeleteAsync(AuthorServiceModel deleteObject)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<BaseAuthorServiceModel> FilterSet(Expression<Func<BaseAuthorServiceModel, bool>> expression)
+        public async Task<IEnumerable<AuthorServiceModel>> FilterByAsync(Expression<Func<AuthorServiceModel, bool>> expression)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<BaseAuthorServiceModel> GetAll()
+        public async Task<IEnumerable<AuthorServiceModel>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<BaseAuthorServiceModel> GetByIdAsync(Guid id)
+        public Task<AuthorServiceModel> GetByIdAsync(Guid? id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<BaseAuthorServiceModel> SaveAsync(BaseAuthorServiceModel entity)
+        public Task<AuthorServiceModel> SaveAsync(AuthorServiceModel entity)
         {
             throw new NotImplementedException();
         }

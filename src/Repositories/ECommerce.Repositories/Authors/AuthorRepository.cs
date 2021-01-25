@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Repositories.Authors
 {
-    public class AuthorRepositry : BaseCrudRepository<Author>, IAuthorRepository
+    public class AuthorRepository : BaseCrudRepository<Author>, IAuthorRepository
     {
         protected override DbSet<Author> DbEntitiesSet { get; }
-        public AuthorRepositry(ECommerceDbContext context)
+        public AuthorRepository(ECommerceDbContext context)
             : base(context)
         {
         }

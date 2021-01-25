@@ -1,6 +1,6 @@
 ﻿
-namespace ECommerce.Services.Models
-{
+namespace ECommerce.Services
+{ 
     public class ServiceModel
     {
     }

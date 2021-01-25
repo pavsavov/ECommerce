@@ -53,7 +53,7 @@ namespace ECommerce.Repository.Base
             return DbEntitiesSet;
         }
 
-        public async Task<TEntity> GetByIdAsync(Guid id)
+        public async Task<TEntity> GetByIdAsync(Guid? id)
         {
             return await DbEntitiesSet.FindAsync(id);
         }
@@ -67,7 +67,6 @@ namespace ECommerce.Repository.Base
 
             return GetAll().Where(predicate);
         }
-
     }
 }
 
