@@ -1,10 +1,12 @@
-﻿using ECommerce.DataAccess;
+﻿using AutoMapper;
+using ECommerce.DataAccess;
 using ECommerce.Repositories;
 using ECommerce.Repositories.Authors;
 using ECommerce.Repositories.Base;
 using ECommerce.Repositories.Books;
 using ECommerce.Repository.Base;
 using ECommerce.Services.Authors;
+using ECommerce.Services.AutoMapper;
 using ECommerce.Services.Base;
 using ECommerce.Services.Books;
 using ECommerce.Services.Contracts;
@@ -34,17 +36,18 @@ namespace ECommerce.Services.Extensions
             services.AddTransient(typeof(IAuthorRepository), typeof(AuthorRepository));        
 
             //service dependencies
-           // services.AddTransient(typeof(IBaseService), typeof(BaseService));
+            //services.AddTransient(typeof(IBaseService), typeof(BaseService));
             services.AddTransient(typeof(IBookService), typeof(BookService));
             services.AddTransient(typeof(IAuthorService), typeof(AuthorService));
+            //services.AddTransient(typeof(IMapper), typeof(Auto));
 
             /*Registration of types which implement IMapFrom <> and IMapTo<> interfaces
   assemblies in order to be mapped automatically by convention.
   This way creating profiles is not needed.*/
             //Example:
             //AutoMapperConfig.RegisterMappings(
-            //    typeof(SomeViewModel).Assembly, || typeof(SomeViewModel).GetTypeInfo().Assembly
-            //    typeof(SomeServiceModel).Assembly,
+            //    typeof(BookViewModel).Assembly || typeof(SomeViewModel).GetTypeInfo().Assembly
+            //    typeof(SomeServiceModel).Assembly
             //    );
             return services;
         }

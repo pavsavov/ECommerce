@@ -6,6 +6,6 @@ namespace ECommerce.Services.Models.Book.ServiceModels
 {
     public class BookServiceModel : ServiceModel, IMapTo<BaseDbModel>,IMapFrom<BaseDbModel>
     {
-        public string Sth { get; set; }
+        public string ISBN { get; set; }
     }
 }

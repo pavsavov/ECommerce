@@ -5,6 +5,6 @@ namespace ECommerce.Web.Models.BookViewModels
 {
     public class BookViewModel : IMapTo<BookServiceModel>, IMapFrom<BookServiceModel>
     {
-        public string Test { get; set; }
+        public string ISBN { get; set; }
     }
 }

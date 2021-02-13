@@ -2,12 +2,16 @@
 using ECommerce.Services.Books;
 using ECommerce.Services.Models.Book.ServiceModels;
 using ECommerce.Web.Models.BookViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ECommerce.Web.Controllers
 {
     [ApiController]
+    [AllowAnonymous]
+    [Route("/api/book/")]
     public class BookController : ControllerBase
     {
         private readonly IBookService _bookService;
@@ -19,22 +23,26 @@ namespace ECommerce.Web.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("book/grid")]
+        [HttpGet("getAll")]
         public async Task<IActionResult> GetAllBooks()
         {
-            var books = await _bookService.GetAllAsync();
+            //  var books = await _bookService.GetAllAsync();
+
+            var books = new List<BookServiceModel>()
+            {
+                new BookServiceModel(){ISBN = "asd"}
+            };
 
             if (books is null)
             {
                 return Ok("There are no books to list");
             }
 
-            return Ok(books);
+            return Ok(  books); 
         }
 
-
-        [HttpPost("book/create")]
-        [ValidateAntiForgeryToken]
+        [HttpPost("create")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BookViewModel viewModel)
         {
             if (viewModel is null)
@@ -44,11 +52,9 @@ namespace ECommerce.Web.Controllers
 
             var serviceModels = _mapper.Map<BookServiceModel>(viewModel);
 
-            var newBook = await _bookService.SaveAsync(serviceModels);
+            await _bookService.SaveAsync(serviceModels);
 
-            var mappedViewModel = _mapper.Map<BookViewModel>(newBook);
-
-            return Ok(mappedViewModel);
+            return Ok();
         }
     }
 }

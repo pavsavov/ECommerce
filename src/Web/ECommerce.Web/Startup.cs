@@ -6,6 +6,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ECommerce.Services.Extensions;
 using ECommerce.Web.Extensions;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using ECommerce.Web.Models.BookViewModels;
+using ECommerce.Services.Models.Book.ServiceModels;
+using System.Reflection;
+using ECommerce.Services.AutoMapper;
+using AutoMapper;
 
 namespace ECommerce.Web
 {
@@ -23,8 +29,8 @@ namespace ECommerce.Web
         {
             //TODO: move to Extensions project and research on a method to dynamicly load all mappable types.
 
- 
 
+            services.AddSpaStaticFiles();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -32,6 +38,14 @@ namespace ECommerce.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            //automapper
+            AutoMapperConfig.RegisterMappings(
+                typeof(BookViewModel).Assembly, 
+                typeof(BookServiceModel).Assembly
+                );
+
+            services.AddSingleton(typeof(IMapper), AutoMapperConfig.MapperInstance);
 
             //services.AddRazorPages();
             services.AddMvc();
@@ -42,6 +56,11 @@ namespace ECommerce.Web
             services.AddECommerceDbContext(this.Configuration);
 
             services.AddECommerceAuthentication();
+
+            services.AddSpaStaticFiles(config =>
+            {
+                config.RootPath = "ClientApp/build";
+            });
 
         }
 
@@ -59,9 +78,9 @@ namespace ECommerce.Web
             }
 
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
-
+            app.UseSpaStaticFiles();
+            app.UseCors();
             app.UseCookiePolicy();
 
             app.UseAuthentication();
@@ -76,7 +95,17 @@ namespace ECommerce.Web
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "api/{controller}/{action}/{id?}");
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
             });
         }
     }

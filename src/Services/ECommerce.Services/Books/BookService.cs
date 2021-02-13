@@ -19,10 +19,10 @@ namespace ECommerce.Services.Books
         private readonly IBookRepository _bookRepository;
         public BookService(
             IBookRepository bookRepository,
-            ILogger logger,
+            //ILogger logger,
             IMapper mapper
             )
-            : base(logger, mapper)
+            : base(/*logger,*/ mapper)
         {
             _bookRepository = bookRepository;
         }

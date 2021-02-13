@@ -14,8 +14,8 @@ namespace ECommerce.Services.Authors
     public class AuthorService : BaseService, IAuthorService
     {
         private readonly IAuthorRepository _authorRepository;
-        public AuthorService(IAuthorRepository authorRepository, ILogger logger, IMapper mapper)
-            : base(logger, mapper)
+        public AuthorService(IAuthorRepository authorRepository, /*ILogger logger,*/ IMapper mapper)
+            : base(/*logger,*/ mapper)
         {
             _authorRepository = authorRepository;
         }
