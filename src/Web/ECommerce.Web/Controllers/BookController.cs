@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using ECommerce.Services.Books;
-using ECommerce.Services.Models.Book.ServiceModels;
+using ECommerce.Services.Models;
 using ECommerce.Web.Models.BookViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ECommerce.Web.Controllers
@@ -26,12 +25,12 @@ namespace ECommerce.Web.Controllers
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllBooks()
         {
-            //  var books = await _bookService.GetAllAsync();
+            var books = await _bookService.GetAllAsync();
 
-            var books = new List<BookServiceModel>()
-            {
-                new BookServiceModel(){ISBN = "asd"}
-            };
+            //books = new List<BookServiceModel>()
+            //{
+            //    new BookServiceModel(){ISBN = "asd"}
+            //};
 
             if (books is null)
             {
@@ -55,6 +54,19 @@ namespace ECommerce.Web.Controllers
             await _bookService.SaveAsync(serviceModels);
 
             return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(BookViewModel viewModel)
+        {
+            if (viewModel is null)
+            {
+                return BadRequest("Fill all needed data");
+            }
+
+            var serviceModel = _mapper.Map<BookServiceModel>(viewModel);
+
+            var book = _bookService.GetByIdAsync(viewModel.ISBN)
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using ECommerce.Services.Base;
-using ECommerce.Services.Models.Book.ServiceModels;
+using ECommerce.Services.Models;
 
 namespace ECommerce.Services.Books
 {

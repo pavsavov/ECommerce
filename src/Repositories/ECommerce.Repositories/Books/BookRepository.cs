@@ -4,7 +4,7 @@ using ECommerce.Repositories.Books;
 using ECommerce.Repository.Base;
 using Microsoft.EntityFrameworkCore;
 
-namespace ECommerce.Repositories
+namespace ECommerce.Repositories.Books
 {
     public class BookRepository : BaseCrudRepository<Book>, IBookRepository
     {

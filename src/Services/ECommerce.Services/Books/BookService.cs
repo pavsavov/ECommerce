@@ -4,7 +4,6 @@ using ECommerce.Repositories.Books;
 using ECommerce.Services.Base;
 using ECommerce.Services.Extensions;
 using ECommerce.Services.Models.Book.ServiceModels;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -17,14 +16,16 @@ namespace ECommerce.Services.Books
     public class BookService : BaseService, IBookService
     {
         private readonly IBookRepository _bookRepository;
+      
         public BookService(
             IBookRepository bookRepository,
-            //ILogger logger,
+            ILogger<BaseService> logger,
             IMapper mapper
             )
-            : base(/*logger,*/ mapper)
+            : base(logger, mapper)
         {
             _bookRepository = bookRepository;
+           
         }
 
         public async Task<BookServiceModel> SaveAsync(BookServiceModel serviceModel)
@@ -38,7 +39,7 @@ namespace ECommerce.Services.Books
                 throw new Exception(nameof(book));
             }
 
-            return _mapper.Map<BookServiceModel>(book);
+            return serviceModel;
         }
 
         public Task<bool> DeleteAsync(BookServiceModel deleteObject)
@@ -48,6 +49,8 @@ namespace ECommerce.Services.Books
 
         public async Task<IEnumerable<BookServiceModel>> FilterByAsync(Expression<Func<BookServiceModel, bool>> expression)
         {
+            //Using Task.Run everywhere might not be a good practice.Need to read more
+
             return await Task.Run(() =>
             {
                 var mappedExpression = _mapper.Map<Expression<Func<Book, bool>>>(expression);
